@@ -4,16 +4,34 @@ Create a function named instructorWithLongestName that will receive an array of 
 
 */
 
+/* 
+frankie's thoughts:
+Great job! javascript objects (often referred to as 'hashmaps' or 'maps') are super useful for efficiency (we can get to that another day).
+You asked: I think there’s a way to not keep track of more than one variable
+The answer is yes, there's a way so you only need to keep track of one variable and that is by just keeping the index - shown below.
+Is it better than what you have? Not necessarily. I think your way is just as fine. 
+Another thing you could've done is instead of holding currentLongestName, hold currentLongestNameLength and store the actual length of the string.
+Some testing thoughts:
+- Does your algorithm work if: 
+  - the name is an empty string ('')?
+  - the name is null?
+  - the name is a number?
+  - the object doesn't have 'name' in it?
+
+No need to test it all as that isn't the point of you doing these algorithms, but just keep it in mind. 
+When you're making websites, you can't assume the user is going to act the ideal way. You assume they will try and break it.
+
+Godspeed!
+*/
+
 const instructorWithLongestName = function(instructors) {
-  let currentLongestName = '';
   let indexPositionOfLongestName = 0;
   for (var i = 0; i < instructors.length; i++) {
-    if (instructors[i].name.length > currentLongestName.length) {
-      currentLongestName = instructors[i].name;
-      indexPositionOfLongestName = instructors[i];
+    if (instructors[i].name.length > instructors[indexPositionOfLongestName].length) {
+      indexPositionOfLongestName = i;
     }
   }
-  return indexPositionOfLongestName;
+  return instructors[indexPositionOfLongestName];
 }
 
 console.log(instructorWithLongestName([
